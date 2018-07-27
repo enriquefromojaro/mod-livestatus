@@ -135,7 +135,7 @@ class LiveStatusResponse:
             self.error = msg
         else:
             del self.output[:]
-            self.output.append( LiveStatusQueryError.messages[statuscode] % data )
+            self.output.append(msg)
         self.statuscode = statuscode
 
     def load(self, query):

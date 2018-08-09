@@ -161,7 +161,7 @@ class LiveStatusResponse:
 
     def _generate_wrapped_json_output(self):
         self.output = loads(reduce(lambda acc, x: acc+x, self.output))
-        self.output = {'data': self.output, 'errors': {}, 'total': len(self.output)}
+        self.output = {'data': self.output, 'failed': {}, 'total': len(self.output)}
         if self.error:
             self.output['errors']['shinken-error'] = self.error
         self.output = LiveStatusListResponse([dumps(self.output) + '\n'])

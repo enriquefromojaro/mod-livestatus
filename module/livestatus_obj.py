@@ -85,15 +85,15 @@ class LiveStatus(object):
             code = 500
             output = err
             # We need the output format in order to return the error in one way or another
-            OUTPUT_FORMAT_HEADER = 'OutputFormat:'
-            outputformat = next(
-                (
-                    line[len(OUTPUT_FORMAT_HEADER)+1:].strip()
-                    for line in data.splitlines()
-                    if line.startswith(OUTPUT_FORMAT_HEADER)
-                ),
-                'csv'  # Default value
-            )
+        OUTPUT_FORMAT_HEADER = 'OutputFormat:'
+        outputformat = next(
+            (
+                line[len(OUTPUT_FORMAT_HEADER)+1:].strip()
+                for line in data.splitlines()
+                if line.startswith(OUTPUT_FORMAT_HEADER)
+            ),
+            'csv'  # Default value
+        )
         # Ok now we can return something
         response = LiveStatusResponse(outputformat=outputformat)
         response.set_error(code, output)
